@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .first, .second {
+                height: 1000px;
+                width: 400px;
+                background-color: red;
+                position: relative;
+                margin:auto;
+            }
+        </style>
+    </head>
+        <body>
+            <div class="first"></div>
+            <div style="
+              position: relative;
+              height: 100vh;
+              width: 100%;
+          "><div class="ad" style="
+              position: absolute;
+              clip: rect(0px, auto, 100vh, 0px);
+              height: 100%;
+              width: 100%;
+              top: 0;
+          ">
+                <iframe id="iframe" style="
+              position: fixed;
+              z-index: 99999;
+              left: 50%;
+              top: 50%;
+              transform: translateX(-50%) translateY(-50%);
+              border: none;
+              height: 100vh;
+              width: 100%;
+          "></iframe>
+              </div></div>
+            <div class="second"></div>
+            <script>
+                const celtra = `<div class="celtra-ad-v3">
+                  <!-- externalBundleId      = raw [app_bundle] -->
+                  <!-- track.adLoading       = raw [celtra_requested_tracking_url] -->
+                  <!-- track.creativeLoads   = raw [celtra_loaded_tracking_url] -->
+                  <!-- track.creativeRenders = raw [celtra_rendered_tracking_url] -->
+                  <!-- externalSessionId     = raw [advert_id] -->
+                  <!-- externalCampaignId    = raw [campaignid] -->
+                  <img src="data:image/png,celtra" style="display: none" onerror="
+                      (function(img) {
+                          var params = {'clickUrl':'[celtra_click_tracking_url]','expandDirection':'undefined','preferredClickThroughWindow':'new','textColor':'#FFFFFF','barColor':'#000000','advertisementMessage':'Advertisement','scrollMessage':'Scroll to continue with content','useFullWidth':'0','clickEvent':'advertiser','externalAdServer':'Ogury','tagVersion':'html-standard-7'};
+                          [].slice.apply(img.parentNode.childNodes).forEach(function(n) { var decfs = { urldecode: decodeURIComponent, htmldecode: function(v) { var d = document.createElement('div'); d.innerHTML = v; return d.textContent; }, eval: function(v) { return eval(v); }, raw: function(v) { return v; } }; var m; if (n.nodeType == 8 &amp;&amp; (m = n.textContent.match(/^&#92;s+([&#92;w%.]+)(&#92;[.+&#92;])?&#92;s+=&#92;s+(&#92;w+)&#92;s+(.*)$/i))) { try { params[m[1]+(m[2] || '')] = decfs[m[3]](m[4].replace(/^&#92;s+|&#92;s+$/g, '')); } catch (e) {} } });
+                          var req = document.createElement('script');
+                          req.id = params.scriptId = 'celtra-script-' + (window.celtraScriptIndex = (window.celtraScriptIndex||0)+1);
+                          params.clientTimestamp = new Date/1000;
+                          params.clientTimeZoneOffsetInMinutes = new Date().getTimezoneOffset();
+                          params.hostPageLoadId=window.celtraHostPageLoadId=window.celtraHostPageLoadId||(Math.random()+'').slice(2);
+                          var qs = '';
+                          for (var k in params) {
+                              qs += '&amp;' + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+                          }
+                          var src = 'https://ads.celtra.com/1af7e723/web.js?' + qs;
+                          req.src = src;
+                          img.parentNode.insertBefore(req, img.nextSibling);
+                      })(this);
+                  "/>
+              </div>`;
+
+              const image = `<style>body{margin: 0; text-align:center}</style><img src="https://static.criteo.net/design/dt/97305/230120/578317bd88324371b0ae361d9a4fe5ba_image_ad_300x600.jpeg">`;
+          
+              const iframe = document.getElementById('iframe');
+              iframe.srcdoc = image;
+            </script>
+    </body>
+</html>
